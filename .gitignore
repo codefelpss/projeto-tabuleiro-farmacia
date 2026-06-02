@@ -3,3 +3,8 @@ dist/
 .DS_Store
 *.env
 .env.local
+# artefatos do tsc
+vite.config.js
+vite.config.d.ts
+tsconfig.tsbuildinfo
+tsconfig.node.tsbuildinfo
