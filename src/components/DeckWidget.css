@@ -1,0 +1,236 @@
+/* ══════════════════════════════════════════════
+   DECK WIDGET — baralho premium no painel esquerdo
+   ══════════════════════════════════════════════ */
+
+:root {
+  --dw-card-w: 96px;
+  --dw-card-h: 134px;
+  --dw-navy:   #08142e;
+  --dw-navy2:  #0c1f47;
+  --dw-green:  #071e10;
+  --dw-gold:   rgba(251,191,36,1);
+  --dw-gold-t: rgba(251,191,36,0.45);
+}
+
+.dw-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0 4px;
+}
+
+.dw-section-label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  width: 100%;
+  text-align: left;
+}
+
+/* Stage: gives room for rotated shadow cards */
+.dw-stage {
+  position: relative;
+  width: var(--dw-card-w);
+  height: calc(var(--dw-card-h) + 18px); /* extra for shadow cards */
+  margin-top: 8px;
+}
+
+/* ── Base card style ── */
+.dw-card {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: var(--dw-card-w);
+  height: var(--dw-card-h);
+  border-radius: 10px;
+  background: linear-gradient(
+    155deg,
+    var(--dw-navy) 0%,
+    var(--dw-navy2) 45%,
+    var(--dw-green) 100%
+  );
+  border: 1.5px solid var(--dw-gold-t);
+}
+
+/* ── Shadow card depths ── */
+.dw-s6 { transform: rotate(-5.5deg) translate(-7px, 16px); opacity: 0.20; }
+.dw-s5 { transform: rotate(-4deg)   translate(-5px, 12px); opacity: 0.30; }
+.dw-s4 { transform: rotate(-2.5deg) translate(-3px,  8px); opacity: 0.42; }
+.dw-s3 { transform: rotate(-1.2deg) translate(-1px,  5px); opacity: 0.55; }
+.dw-s2 { transform: rotate(-0.3deg) translate( 0px,  3px); opacity: 0.70; }
+.dw-s1 { transform: rotate( 0.3deg) translate( 0px,  1px); opacity: 0.85; }
+
+/* ── Top card ── */
+.dw-top {
+  border: 2px solid var(--dw-gold-t);
+  background: linear-gradient(
+    155deg,
+    #0a1628 0%,
+    #0e2a50 35%,
+    #0d2040 60%,
+    #071e10 100%
+  );
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.65),
+    0  3px 10px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(251,191,36,0.18),
+    inset 0 0 40px rgba(251,191,36,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 8px 8px;
+  overflow: hidden;
+  cursor: default;
+  animation: dw-float 3.5s ease-in-out infinite;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.dw-top:hover {
+  animation-play-state: paused;
+  transform: translateY(-6px) scale(1.03) rotate(-0.5deg);
+  box-shadow:
+    0 18px 44px rgba(0,0,0,0.75),
+    0  6px 16px rgba(251,191,36,0.18),
+    inset 0 1px 0 rgba(251,191,36,0.25);
+}
+
+@keyframes dw-float {
+  0%,100% {
+    transform: translateY(0);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.65), 0 3px 10px rgba(0,0,0,0.45), inset 0 1px 0 rgba(251,191,36,0.18);
+  }
+  50% {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.72), 0 5px 14px rgba(251,191,36,0.12), inset 0 1px 0 rgba(251,191,36,0.22);
+  }
+}
+
+/* Shine sweep */
+.dw-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: 9px;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255,255,255,0.06) 48%,
+    rgba(255,255,255,0.10) 50%,
+    rgba(255,255,255,0.06) 52%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 4;
+  animation: dw-shine-sweep 5s ease-in-out infinite;
+}
+
+@keyframes dw-shine-sweep {
+  0%,100% { opacity: 0.3; }
+  50%      { opacity: 1;   }
+}
+
+/* Inner gold border */
+.dw-inner-border {
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(251,191,36,0.3);
+  border-radius: 5px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Corner crosses */
+.dw-corner {
+  position: absolute;
+  font-size: 11px;
+  color: var(--dw-gold);
+  opacity: 0.65;
+  font-weight: 900;
+  z-index: 2;
+  line-height: 1;
+}
+.dw-tl { top:  11px; left:  11px; }
+.dw-tr { top:  11px; right: 11px; }
+.dw-bl { bottom: 11px; left:  11px; }
+.dw-br { bottom: 11px; right: 11px; }
+
+/* Logo area */
+.dw-logo-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 2;
+  padding: 2px 4px;
+}
+
+.dw-logo-img {
+  width: 100%;
+  height: auto;
+  max-height: 76px;
+  object-fit: contain;
+  border-radius: 5px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.8)) brightness(0.95);
+}
+
+.dw-logo-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.dw-fallback-title {
+  font-size: 10px;
+  font-weight: 900;
+  color: var(--dw-gold);
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+/* Pharma icons row */
+.dw-icons {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  z-index: 2;
+}
+
+.dw-icon {
+  font-size: 12px;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.8));
+  opacity: 0.85;
+}
+
+/* Subtitle */
+.dw-subtitle {
+  font-size: 7px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(251,191,36,0.4);
+  text-align: center;
+  z-index: 2;
+}
+
+/* Hint text */
+.dw-count-label {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-align: center;
+  font-style: italic;
+  opacity: 0.7;
+  line-height: 1.4;
+  max-width: 120px;
+}
+
+/* No mobile o baralho decorativo some para liberar espaço */
+@media (max-width: 720px) {
+  .dw-root { display: none; }
+}

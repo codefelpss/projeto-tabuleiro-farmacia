@@ -1,0 +1,114 @@
+/* ══════════════════════════════════════════════
+   PAWN — Peões farmacêuticos visíveis
+   ══════════════════════════════════════════════ */
+.pawn {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  margin-top: -23px;
+  z-index: 10;
+  pointer-events: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Sombra projetada sob o peão ─────────── */
+.pawn-shadow {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 7px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  filter: blur(3px);
+  z-index: 0;
+}
+
+/* ── Anel de seleção (jogador ativo) ─────── */
+.pawn-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 3.5px solid;
+  z-index: 0;
+  animation: ring-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes ring-pulse {
+  0%, 100% { transform: scale(1);    opacity: 0.9; }
+  50%       { transform: scale(1.18); opacity: 0.45; }
+}
+
+/* ── Círculo branco principal ────────────── */
+.pawn-circle {
+  position: relative;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3.5px solid;          /* cor vem via style inline */
+  box-shadow:
+    0 4px 14px rgba(0,0,0,0.50),
+    0 1px  4px rgba(0,0,0,0.30),
+    inset 0 1px 3px rgba(255,255,255,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+/* Peão ativo fica levemente elevado */
+.pawn-active .pawn-circle {
+  transform: translateY(-3px);
+  box-shadow:
+    0 7px 18px rgba(0,0,0,0.55),
+    0 2px  6px rgba(0,0,0,0.35),
+    inset 0 1px 3px rgba(255,255,255,0.9);
+}
+
+/* ── Ícone SVG dentro do círculo ─────────── */
+.pawn-icon-wrap {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Estrela do ativo ────────────────────── */
+.pawn-crown {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  color: #fbbf24;
+  text-shadow:
+    0 1px 3px rgba(0,0,0,0.6),
+    0 0 8px rgba(251,191,36,0.6);
+  z-index: 2;
+  animation: crown-float 1.5s ease-in-out infinite;
+  line-height: 1;
+  pointer-events: none;
+}
+
+@keyframes crown-float {
+  0%, 100% { transform: translateX(-50%) translateY(0px); }
+  50%       { transform: translateX(-50%) translateY(-4px); }
+}
+
+/* ── Mobile ──────────────────────────────── */
+@media (max-width: 600px) {
+  .pawn          { width: 36px; height: 36px; margin-left: -18px; margin-top: -18px; }
+  .pawn-circle   { width: 32px; height: 32px; border-width: 3px; }
+  .pawn-icon-wrap{ width: 20px; height: 20px; }
+  .pawn-crown    { font-size: 10px; top: -10px; }
+  .pawn-shadow   { width: 24px; height: 5px; }
+}

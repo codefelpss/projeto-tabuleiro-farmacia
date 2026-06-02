@@ -1,0 +1,129 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "category": "verdadeiro-falso",
+      "question": "A Assistência Farmacêutica engloba atividades que visam promover a saúde e o bem-estar do paciente.",
+      "correct": true,
+      "alternatives": ["Verdadeiro", "Falso"]
+    },
+    {
+      "id": 2,
+      "category": "verdadeiro-falso",
+      "question": "O farmacêutico não possui responsabilidade sobre o uso racional de medicamentos.",
+      "correct": false,
+      "alternatives": ["Verdadeiro", "Falso"]
+    },
+    {
+      "id": 3,
+      "category": "multipla-escolha",
+      "question": "Qual é a principal função da farmacoterapia?",
+      "correct": 0,
+      "alternatives": [
+        "Usar medicamentos para tratar, curar ou prevenir doenças",
+        "Apenas vender medicamentos",
+        "Realizar cirurgias",
+        "Fazer diagnósticos apenas"
+      ]
+    },
+    {
+      "id": 4,
+      "category": "pergunta-aberta",
+      "question": "Explique o que é farmacovigilância.",
+      "sample": "Monitoramento de efeitos adversos de medicamentos após comercialização"
+    },
+    {
+      "id": 5,
+      "category": "multipla-escolha",
+      "question": "Qual é o objetivo principal do acompanhamento farmacoterapêutico?",
+      "correct": 1,
+      "alternatives": [
+        "Aumentar vendas de medicamentos",
+        "Otimizar os resultados da terapia medicamentosa",
+        "Complexar o tratamento",
+        "Diminuir a qualidade de vida"
+      ]
+    },
+    {
+      "id": 6,
+      "category": "curiosidade",
+      "question": "CURIOSIDADE: O primeiro farmacêutico profissional reconhecido foi na Babilônia, onde cravara de argila registravam prescrições medicamentosas!",
+      "info": "História da Farmácia"
+    },
+    {
+      "id": 7,
+      "category": "verdadeiro-falso",
+      "question": "A Atenção Farmacêutica é um conceito moderno que surgiu no século XX.",
+      "correct": true,
+      "alternatives": ["Verdadeiro", "Falso"]
+    },
+    {
+      "id": 8,
+      "category": "multipla-escolha",
+      "question": "Qual é a interação farmacocinética mais crítica?",
+      "correct": 2,
+      "alternatives": [
+        "Sinergismo apenas positivo",
+        "Inibição do metabolismo",
+        "Indução ou inibição enzimática do citocromo P450",
+        "Nenhuma relevância clínica"
+      ]
+    },
+    {
+      "id": 9,
+      "category": "pergunta-aberta",
+      "question": "Quais são os principais cuidados na administração de medicamentos intravenosos?",
+      "sample": "Esterilidade, compatibilidade de solventes, velocidade de infusão, monitoramento de reações"
+    },
+    {
+      "id": 10,
+      "category": "verdadeiro-falso",
+      "question": "Os medicamentos genéricos têm a mesma eficácia que os medicamentos de marca.",
+      "correct": true,
+      "alternatives": ["Verdadeiro", "Falso"]
+    },
+    {
+      "id": 11,
+      "category": "multipla-escolha",
+      "question": "Qual é a principal causa de reações adversas evitáveis?",
+      "correct": 0,
+      "alternatives": [
+        "Erro de medicação",
+        "Reação alérgica inesperada",
+        "Fatores genéticos",
+        "Idade avançada apenas"
+      ]
+    },
+    {
+      "id": 12,
+      "category": "curiosidade",
+      "question": "CURIOSIDADE: A aspirina é um dos medicamentos mais antigos ainda em uso, derivada da casca do salgueiro usada há séculos!",
+      "info": "Origem dos Medicamentos"
+    },
+    {
+      "id": 13,
+      "category": "verdadeiro-falso",
+      "question": "A farmacoeconomia não influencia decisões de saúde pública.",
+      "correct": false,
+      "alternatives": ["Verdadeiro", "Falso"]
+    },
+    {
+      "id": 14,
+      "category": "pergunta-aberta",
+      "question": "Descreva o processo de boas práticas de fabricação de medicamentos.",
+      "sample": "Controle de qualidade, rastreabilidade, sanitização, documentação completa"
+    },
+    {
+      "id": 15,
+      "category": "multipla-escolha",
+      "question": "O que é o código ATC?",
+      "correct": 1,
+      "alternatives": [
+        "Análise de Terapia Clínica",
+        "Classificação Anatômica, Terapêutica e Química",
+        "Associação de Tóxicos Cientificamente",
+        "Avaliação de Tecnologia Clínica"
+      ]
+    }
+  ]
+}

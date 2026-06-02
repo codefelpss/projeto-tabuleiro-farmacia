@@ -1,0 +1,151 @@
+.player-panel { display: flex; flex-direction: column; gap: 10px; }
+
+.panel-title {
+  font-size: 10px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--text-muted);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.player-list { display: flex; flex-direction: column; gap: 7px; }
+
+/* ── Card de jogador ── */
+.player-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  border-left-width: 4px;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.player-card.active {
+  background: var(--surface-3);
+  border-color: var(--yellow);
+  box-shadow: 0 0 0 1px rgba(251,191,36,.15), var(--shadow-y);
+}
+
+@keyframes card-glow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(251,191,36,.15), 0 4px 16px rgba(251,191,36,.15); }
+  50%       { box-shadow: 0 0 0 2px rgba(251,191,36,.3),  0 4px 20px rgba(251,191,36,.3); }
+}
+
+.player-card.active { animation: card-glow 2s ease-in-out infinite; }
+
+/* ── Avatar ── */
+.player-avatar {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 900;
+  color: #000;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,.5);
+}
+
+/* ── Info ── */
+.player-info { flex: 1; min-width: 0; }
+
+.player-name {
+  font-size: 13px; font-weight: 800;
+  color: var(--text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.player-cell {
+  font-size: 10px; color: var(--text-muted);
+  margin-top: 1px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.player-stats { display: flex; align-items: center; gap: 6px; margin-top: 3px; }
+
+.player-pos-badge {
+  font-size: 10px; font-weight: 700;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 1px 5px;
+}
+
+.player-score-badge {
+  font-size: 10px; font-weight: 800;
+  color: #000;
+  background: var(--yellow);
+  border-radius: 5px;
+  padding: 1px 6px;
+}
+
+/* ── Indicador de turno ── */
+.active-indicator { display: flex; flex-direction: column; align-items: center; gap: 2px; flex-shrink: 0; }
+.active-arrow  { font-size: 12px; color: var(--yellow); }
+.active-label  { font-size: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--yellow); }
+
+/* ── Info do dado ── */
+.dice-info-strip {
+  display: flex;
+  align-items: center; justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-y);
+  margin-top: 2px;
+}
+
+.dice-info-label { font-size: 11px; color: var(--text-muted); font-weight: 600; }
+.dice-info-value { font-size: 22px; font-weight: 900; color: var(--yellow); line-height: 1; }
+
+/* ════════════════════════════════════════
+   MOBILE — painel de placar compacto
+   ════════════════════════════════════════ */
+@media (max-width: 720px) {
+  .player-panel {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .panel-title {
+    width: 100%;
+    padding-bottom: 4px;
+    margin-bottom: 0;
+  }
+
+  .player-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .player-card {
+    flex: 1;
+    min-width: 130px;
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .player-avatar {
+    width: 30px; height: 30px;
+    font-size: 13px;
+    border-radius: 8px;
+  }
+
+  .player-name { font-size: 12px; }
+  .player-cell { display: none; /* oculta localização no mobile para economizar espaço */ }
+  .player-stats { gap: 4px; margin-top: 2px; }
+  .player-pos-badge { font-size: 9px; padding: 1px 4px; }
+  .player-score-badge { font-size: 9px; padding: 1px 5px; }
+
+  .active-indicator { gap: 1px; }
+  .active-arrow { font-size: 10px; }
+  .active-label { font-size: 7px; }
+}

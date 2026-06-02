@@ -1,0 +1,117 @@
+:root {
+  font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* ── Paleta Preta & Amarela ── */
+  --yellow:        #fbbf24;
+  --yellow-dark:   #d97706;
+  --yellow-deep:   #92400e;
+  --yellow-light:  #fef3c7;
+  --yellow-glow:   rgba(251,191,36,0.25);
+
+  /* ── Superfícies escuras ── */
+  --bg:        #0d0d0d;
+  --bg-2:      #131313;
+  --surface:   #1a1a1a;
+  --surface-2: #222222;
+  --surface-3: #2a2a2a;
+
+  /* ── Bordas ── */
+  --border:    #2e2e2e;
+  --border-2:  #3d3d3d;
+  --border-y:  rgba(251,191,36,0.35);  /* borda amarela */
+
+  /* ── Textos ── */
+  --text:      #f0f0f0;
+  --text-2:    #d4d4d4;
+  --text-muted:#888888;
+
+  /* ── Sombras ── */
+  --shadow-xs: 0 1px  2px rgba(0,0,0,.4);
+  --shadow-sm: 0 2px  8px rgba(0,0,0,.5);
+  --shadow-md: 0 4px 18px rgba(0,0,0,.6);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.7);
+  --shadow-xl: 0 24px 64px rgba(0,0,0,.8);
+  --shadow-y:  0 4px 20px rgba(251,191,36,.3);   /* sombra amarela */
+
+  /* ── Bordas ── */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius:    14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* Aliases usados nos componentes existentes */
+  --blue-dark:    #0d0d0d;
+  --blue-mid:     var(--yellow);
+  --blue-light:   var(--yellow-light);
+  --green-dark:   #111111;
+  --green-mid:    var(--yellow-dark);
+  --green-light:  var(--yellow-light);
+  --pharma-navy:       #0d0d0d;
+  --pharma-navy-2:     #080808;
+  --pharma-blue:       var(--yellow);
+  --pharma-blue-mid:   var(--yellow);
+  --pharma-blue-light: var(--yellow-light);
+  --pharma-green:      var(--yellow-dark);
+  --pharma-green-dark: var(--yellow-deep);
+  --pharma-green-light:var(--yellow-light);
+  --pharma-gold:       var(--yellow);
+  --pharma-gold-light: var(--yellow-light);
+  --pharma-red:        #ef4444;
+  --pharma-red-light:  #1f0505;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  /* Impede scroll horizontal acidental em mobile */
+  overflow-x: hidden;
+}
+
+#root { width: 100%; min-height: 100vh; }
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  /* Elimina delay de 300ms e double-tap-zoom em telas touch */
+  touch-action: manipulation;
+  /* Área mínima de toque recomendada pelo Google/Apple: 44px */
+  min-height: 44px;
+  min-width: 44px;
+}
+
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* iOS: impede zoom ao focar em inputs com font-size < 16px */
+input, select, textarea {
+  font-family: inherit;
+  font-size: 16px;
+  touch-action: manipulation;
+}
+
+/* Remove hover stuck em touch (finger-hover fica "preso") */
+@media (hover: none) {
+  button:hover {
+    transform: none !important;
+    opacity: 1 !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Safe-area para iPhones com notch / Dynamic Island */
+@supports (padding: env(safe-area-inset-bottom)) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

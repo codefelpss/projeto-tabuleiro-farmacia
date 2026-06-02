@@ -1,0 +1,187 @@
+.dice-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+/* ── Cena 3D ── */
+.dice-scene {
+  width: 140px; height: 140px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  perspective: 320px;
+  perspective-origin: 50% 40%;
+  flex-shrink: 0;
+}
+
+/* Sombra amarela projetada sob o dado */
+.dice-scene::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 50%;
+  transform: translateX(-50%);
+  width: 70px; height: 14px;
+  background: rgba(251,191,36,0.2);
+  border-radius: 50%;
+  filter: blur(8px);
+}
+
+/* ── Cubo ── */
+.dice-cube {
+  width: 90px; height: 90px;
+  position: relative;
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+/* ── Faces ── */
+.dice-face {
+  position: absolute;
+  width: 90px; height: 90px;
+  border-radius: 14px;
+  backface-visibility: hidden;
+  border: 2px solid rgba(251,191,36,0.5);
+}
+
+/* Dado preto com faces de diferentes tons */
+.front  {
+  transform: translateZ(45px);
+  background: linear-gradient(145deg, #1f1f1f 0%, #141414 100%);
+  box-shadow: inset 0 2px 6px rgba(255,255,255,0.06), inset 0 -2px 4px rgba(0,0,0,0.6);
+}
+.right  {
+  transform: rotateY(90deg) translateZ(45px);
+  background: linear-gradient(145deg, #181818 0%, #101010 100%);
+}
+.top    {
+  transform: rotateX(90deg) translateZ(45px);
+  background: linear-gradient(145deg, #252525 0%, #1a1a1a 100%);
+  box-shadow: inset 0 2px 8px rgba(255,255,255,0.07);
+}
+.bottom {
+  transform: rotateX(-90deg) translateZ(45px);
+  background: linear-gradient(145deg, #0a0a0a 0%, #060606 100%);
+}
+.left   {
+  transform: rotateY(-90deg) translateZ(45px);
+  background: linear-gradient(145deg, #161616 0%, #0e0e0e 100%);
+}
+.back   {
+  transform: rotateY(180deg) translateZ(45px);
+  background: linear-gradient(145deg, #111111 0%, #080808 100%);
+}
+
+/* ── Grid de pontos 3×3 ── */
+.dice-face-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%; height: 100%;
+  padding: 12px; gap: 4px;
+}
+
+.dice-dot { border-radius: 50%; background: transparent; }
+
+/* Pontos AMARELOS com brilho */
+.dice-dot.on {
+  background: radial-gradient(circle at 35% 30%, #fde68a, #f59e0b);
+  box-shadow:
+    0 0 6px rgba(251,191,36,0.7),
+    0 0 2px rgba(251,191,36,0.9),
+    inset 0 1px 1px rgba(255,255,255,0.3);
+}
+
+/* ── Área do resultado ── */
+.dice-result-area {
+  min-height: 56px;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.dice-result { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+
+.dice-result-label {
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.dice-result-number {
+  font-size: 44px; font-weight: 900;
+  color: var(--yellow);
+  line-height: 1; letter-spacing: -0.03em;
+  text-shadow: 0 0 20px rgba(251,191,36,.5), 0 2px 8px rgba(0,0,0,.5);
+}
+
+.dice-rolling-text {
+  font-size: 13px; font-style: italic; color: var(--text-muted);
+  animation: pulse-text 0.7s ease-in-out infinite alternate;
+}
+
+.dice-idle-text { font-size: 12px; color: var(--text-muted); opacity: 0.6; }
+
+@keyframes pulse-text {
+  from { opacity: 0.4; }
+  to   { opacity: 1; }
+}
+
+/* ── Botão rolar ── */
+.roll-btn {
+  padding: 14px 28px;
+  font-size: 15px; font-weight: 900;
+  background: var(--yellow);
+  color: #000;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 18px rgba(251,191,36,.4);
+  transition: box-shadow 0.2s, opacity 0.15s, transform 0.1s;
+  letter-spacing: 0.04em;
+  border: none;
+  width: 100%;
+  /* Área de toque confortável */
+  min-height: 52px;
+}
+
+.roll-btn:hover:not(.disabled):not(.rolling) {
+  box-shadow: 0 6px 26px rgba(251,191,36,.6);
+  transform: translateY(-1px);
+}
+
+.roll-btn:active:not(.disabled):not(.rolling) {
+  transform: scale(0.97);
+  box-shadow: 0 2px 10px rgba(251,191,36,.4);
+}
+
+.roll-btn.rolling,
+.roll-btn.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Mobile: dado menor para caber lado a lado com turn-card */
+@media (max-width: 720px) {
+  .dice-scene {
+    width: 110px;
+    height: 110px;
+  }
+  .dice-cube {
+    width: 70px;
+    height: 70px;
+  }
+  .dice-face {
+    width: 70px;
+    height: 70px;
+    border-radius: 11px;
+  }
+  .front  { transform: translateZ(35px); }
+  .right  { transform: rotateY(90deg)  translateZ(35px); }
+  .top    { transform: rotateX(90deg)  translateZ(35px); }
+  .bottom { transform: rotateX(-90deg) translateZ(35px); }
+  .left   { transform: rotateY(-90deg) translateZ(35px); }
+  .back   { transform: rotateY(180deg) translateZ(35px); }
+
+  .dice-result-number { font-size: 34px; }
+  .roll-btn { font-size: 14px; padding: 12px 20px; }
+}

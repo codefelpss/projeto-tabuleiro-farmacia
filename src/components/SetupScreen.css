@@ -1,0 +1,233 @@
+.setup-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at 25% 25%, rgba(251,191,36,.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 75%, rgba(251,191,36,.08) 0%, transparent 55%),
+    #080808;
+}
+
+.setup-card {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  width: min(580px, 100%);
+  box-shadow: var(--shadow-xl), 0 0 0 1px var(--border);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+/* ── Header ── */
+.setup-header {
+  background: #0a0a0a;
+  padding: 32px 28px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Linha amarela no topo */
+.setup-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--yellow), transparent);
+}
+
+/* Brilho sutil de fundo */
+.setup-header::after {
+  content: '';
+  position: absolute;
+  top: -60px; left: 50%;
+  transform: translateX(-50%);
+  width: 300px; height: 200px;
+  background: radial-gradient(ellipse, rgba(251,191,36,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Moldura arredondada em volta da logo */
+.setup-logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  background: rgba(251,191,36,0.06);
+  border-radius: 28px;
+  border: 1.5px solid rgba(251,191,36,0.2);
+  padding: 18px 24px 12px;
+  box-shadow:
+    inset 0 1px 3px rgba(251,191,36,0.08),
+    0 8px 24px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.setup-logo-wrapper img {
+  border-radius: 16px;
+}
+
+.setup-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Corpo ── */
+.setup-body {
+  padding: 24px 28px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  background: var(--surface);
+}
+
+.setup-section-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+/* ── Botões de contagem ── */
+.player-count-btns { display: flex; gap: 8px; }
+
+.count-btn {
+  width: 46px; height: 46px;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--border);
+  background: var(--surface-2);
+  font-size: 18px; font-weight: 800;
+  color: var(--text-muted);
+  transition: all 0.15s;
+}
+
+.count-btn.selected {
+  border-color: var(--yellow);
+  background: var(--yellow);
+  color: #000;
+  box-shadow: 0 3px 12px rgba(251,191,36,.4);
+}
+
+.count-btn:hover:not(.selected) {
+  border-color: var(--border-y);
+  color: var(--yellow);
+}
+
+/* ── Linhas de jogadores ── */
+.setup-players { display: flex; flex-direction: column; gap: 10px; }
+
+.setup-player-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  transition: border-color 0.15s;
+}
+
+.setup-player-row:focus-within {
+  border-color: var(--border-y);
+}
+
+.setup-player-num {
+  width: 32px; height: 32px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 900;
+  color: #000;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,.3);
+}
+
+.setup-name-input {
+  flex: 1;
+  padding: 7px 10px;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  font-size: 14px; font-weight: 600;
+  outline: none;
+}
+
+.setup-name-input::placeholder { color: var(--text-muted); font-weight: 400; }
+
+.setup-name-input:focus {
+  border-color: var(--border-y);
+  background: var(--surface-3);
+}
+
+.setup-pawn-select {
+  padding: 7px 10px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-3);
+  color: var(--text);
+  font-size: 12px; font-weight: 600;
+  outline: none; cursor: pointer;
+  flex-shrink: 0; max-width: 148px;
+}
+
+.setup-pawn-select:focus { border-color: var(--border-y); }
+
+/* ── Rodapé ── */
+.setup-footer { padding: 8px 28px 28px; background: var(--surface); }
+
+.start-btn {
+  width: 100%;
+  padding: 16px;
+  font-size: 17px; font-weight: 900;
+  background: var(--yellow);
+  color: #000;
+  border-radius: var(--radius);
+  box-shadow: 0 6px 22px rgba(251,191,36,.4);
+  letter-spacing: 0.03em;
+  transition: opacity 0.15s, box-shadow 0.15s, transform 0.1s;
+}
+
+.start-btn:hover {
+  opacity: 0.9;
+  box-shadow: 0 8px 30px rgba(251,191,36,.55);
+}
+
+@media (max-width: 520px) {
+  .setup-screen { padding: 12px; }
+  .setup-header { padding: 20px 16px 16px; }
+  .setup-body   { padding: 16px 14px 8px; }
+  .setup-footer { padding: 8px 14px max(22px, env(safe-area-inset-bottom)); }
+  .setup-pawn-select { max-width: 120px; font-size: 11px; }
+  .setup-logo-wrapper { padding: 12px 14px 10px; }
+
+  /* Botões de contagem maiores para touch */
+  .count-btn {
+    width: 52px; height: 52px;
+    font-size: 20px;
+  }
+
+  /* Linha de jogador empilhada em telas muito pequenas */
+  .setup-player-row { padding: 8px 10px; }
+
+  /* Botão iniciar bem grande */
+  .start-btn {
+    padding: 18px;
+    font-size: 18px;
+    min-height: 58px;
+  }
+
+  /* Input mais alto para toque fácil */
+  .setup-name-input {
+    padding: 10px 10px;
+    min-height: 44px;
+  }
+}
