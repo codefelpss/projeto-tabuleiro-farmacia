@@ -79,7 +79,7 @@ export function useGameState() {
             ...prev,
             players: updatedPlayers,
             phase: 'advance',
-            advanceMessage: '🎉 Parabéns! Avance 2 casas!',
+            advanceMessage: 'Parabéns! Avance 2 casas!',
           };
         }
 

@@ -47,7 +47,8 @@
 }
 
 .victory-trophy {
-  font-size: 64px; display: block; margin-bottom: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px;
   filter: drop-shadow(0 0 20px rgba(251,191,36,.6));
 }
 
@@ -97,7 +98,15 @@
   box-shadow: 0 0 0 1px rgba(251,191,36,.15);
 }
 
-.rank-medal { font-size: 22px; width: 34px; text-align: center; flex-shrink: 0; }
+.rank-medal {
+  font-size: 13px; font-weight: 900;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
 
 .rank-avatar {
   width: 36px; height: 36px;
@@ -119,6 +128,10 @@
 .rank-score { font-size: 15px; font-weight: 900; color: var(--yellow); }
 
 .restart-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   margin: 14px 24px 24px;
   width: calc(100% - 48px);
   padding: 15px; font-size: 16px; font-weight: 900;

@@ -206,7 +206,6 @@
   .setup-header { padding: 20px 16px 16px; }
   .setup-body   { padding: 16px 14px 8px; }
   .setup-footer { padding: 8px 14px max(22px, env(safe-area-inset-bottom)); }
-  .setup-pawn-select { max-width: 120px; font-size: 11px; }
   .setup-logo-wrapper { padding: 12px 14px 10px; }
 
   /* Botões de contagem maiores para touch */
@@ -215,19 +214,34 @@
     font-size: 20px;
   }
 
-  /* Linha de jogador empilhada em telas muito pequenas */
-  .setup-player-row { padding: 8px 10px; }
+  /* Linha de jogador: empilha o select abaixo do nome em telas pequenas */
+  .setup-player-row {
+    padding: 8px 10px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .setup-name-input {
+    flex: 1;
+    padding: 10px 10px;
+    min-height: 44px;
+    /* font-size herdado: 16px do index.css — NÃO sobrescrever para evitar zoom no iOS */
+  }
+
+  /* Select ocupa linha própria, alinhado com o input (badge tem 32px + 6px gap) */
+  .setup-pawn-select {
+    flex: 0 0 calc(100% - 38px);
+    max-width: calc(100% - 38px);
+    margin-left: 38px;
+    font-size: 16px; /* >= 16px evita zoom automático no iOS Safari */
+    min-height: 40px;
+    padding: 8px 10px;
+  }
 
   /* Botão iniciar bem grande */
   .start-btn {
     padding: 18px;
     font-size: 18px;
     min-height: 58px;
-  }
-
-  /* Input mais alto para toque fácil */
-  .setup-name-input {
-    padding: 10px 10px;
-    min-height: 44px;
   }
 }

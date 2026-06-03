@@ -15,7 +15,7 @@ export const VictoryScreen: React.FC<VictoryScreenProps> = ({ players, onRestart
   });
 
   const winner = sorted[0];
-  const medals = ['🥇', '🥈', '🥉'];
+  const medalColors = ['#f59e0b', '#94a3b8', '#b45309'];
 
   return (
     <div className="victory-screen">
@@ -31,7 +31,14 @@ export const VictoryScreen: React.FC<VictoryScreenProps> = ({ players, onRestart
             animate={{ rotate: [-5, 5, -5] }}
             transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
           >
-            🏆
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+              <path d="M4 22h16"/>
+              <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+              <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+              <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/>
+            </svg>
           </motion.div>
           <h1 className="victory-title">Fim de Jogo!</h1>
           <p className="victory-winner">
@@ -54,8 +61,8 @@ export const VictoryScreen: React.FC<VictoryScreenProps> = ({ players, onRestart
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1 + 0.2 }}
               >
-                <span className="rank-medal">
-                  {i < 3 ? medals[i] : `${i + 1}°`}
+                <span className="rank-medal" style={i < 3 ? { color: medalColors[i], borderColor: medalColors[i] } : {}}>
+                  {i + 1}°
                 </span>
                 <div
                   className="rank-avatar"
@@ -79,7 +86,11 @@ export const VictoryScreen: React.FC<VictoryScreenProps> = ({ players, onRestart
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.96 }}
         >
-          Jogar Novamente ↩
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+            <path d="M3 3v5h5"/>
+          </svg>
+          Jogar Novamente
         </motion.button>
       </motion.div>
     </div>

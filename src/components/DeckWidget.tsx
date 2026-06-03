@@ -51,9 +51,28 @@ export const DeckWidget: React.FC = () => {
 
           {/* Pharmaceutical icons row */}
           <div className="dw-icons">
-            <span className="dw-icon">💊</span>
-            <span className="dw-icon">🧪</span>
-            <span className="dw-icon">💉</span>
+            <span className="dw-icon" title="Medicamento">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </span>
+            <span className="dw-icon" title="Laboratório">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 3h6"/>
+                <path d="M10 3v6l-4 9h12l-4-9V3"/>
+              </svg>
+            </span>
+            <span className="dw-icon" title="Seringa">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m18 2 4 4"/>
+                <path d="m17 7 3-3"/>
+                <path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/>
+                <path d="m9 11 4 4"/>
+                <path d="m5 19-3 3"/>
+                <path d="m14 4 6 6"/>
+              </svg>
+            </span>
           </div>
 
           <p className="dw-subtitle">Assistência Farmacêutica</p>

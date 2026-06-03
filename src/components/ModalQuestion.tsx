@@ -172,7 +172,13 @@ export const ModalQuestion: React.FC<ModalQuestionProps> = ({
                     {/* ── CURIOSIDADE ── */}
                     {question?.category === 'curiosidade' && (
                       <div className="mq-info-box">
-                        <span className="mq-info-icon">💡</span>
+                        <span className="mq-info-icon">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4"/>
+                            <path d="M12 8h.01"/>
+                          </svg>
+                        </span>
                         <p>{question.info}</p>
                       </div>
                     )}
@@ -219,7 +225,17 @@ export const ModalQuestion: React.FC<ModalQuestionProps> = ({
                     {phase === 'result' && result && question?.category !== 'curiosidade' && (
                       <div className={`mq-result-box ${result.isCorrect ? 'correct' : 'incorrect'}`}>
                         <p className="mq-result-title">
-                          {result.isCorrect ? '✅ Correto! +1 ponto' : '❌ Incorreto!'}
+                          {result.isCorrect ? (
+                            <>
+                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                              Correto! +1 ponto
+                            </>
+                          ) : (
+                            <>
+                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+                              Incorreto!
+                            </>
+                          )}
                         </p>
                         {question?.alternatives && (
                           <div className="mq-alt-result">
@@ -227,8 +243,8 @@ export const ModalQuestion: React.FC<ModalQuestionProps> = ({
                               <div key={i} className={`mq-alt-r ${i === correctIdx ? 'r-correct' : i === result.selectedIndex ? 'r-wrong' : ''}`}>
                                 <span className="mq-alt-letter">{String.fromCharCode(65 + i)}</span>
                                 <span className="mq-alt-text">{alt}</span>
-                                {i === correctIdx && <span className="mq-check">✓</span>}
-                                {i === result.selectedIndex && i !== correctIdx && <span className="mq-cross">✗</span>}
+                                {i === correctIdx && <svg className="mq-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>}
+                                {i === result.selectedIndex && i !== correctIdx && <svg className="mq-cross" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>}
                               </div>
                             ))}
                           </div>
@@ -244,7 +260,13 @@ export const ModalQuestion: React.FC<ModalQuestionProps> = ({
 
                     {phase === 'result' && result && question?.category === 'curiosidade' && (
                       <div className="mq-info-box">
-                        <span className="mq-info-icon">💡</span>
+                        <span className="mq-info-icon">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4"/>
+                            <path d="M12 8h.01"/>
+                          </svg>
+                        </span>
                         <p>{question.info}</p>
                       </div>
                     )}
@@ -263,7 +285,7 @@ export const ModalQuestion: React.FC<ModalQuestionProps> = ({
                     )}
                     {phase === 'question' && contentReady && question?.category === 'curiosidade' && (
                       <button className="mq-btn-primary" onClick={submitAnswer}>
-                        Entendi! 👍
+                        Entendi!
                       </button>
                     )}
                     {phase === 'result' && (

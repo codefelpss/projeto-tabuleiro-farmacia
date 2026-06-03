@@ -45,6 +45,9 @@
 }
 
 .header-reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 8px 18px;
   font-size: 13px;
   font-weight: 700;

@@ -126,7 +126,18 @@ export const Dice3D: React.FC<Dice3DProps> = ({ onRoll, disabled = false }) => {
         whileHover={!rolling && !disabled ? { scale: 1.05 } : {}}
         whileTap={!rolling && !disabled ? { scale: 0.95 } : {}}
       >
-        {rolling ? 'Rolando…' : disabled ? 'Aguarde' : '🎲 Rolar Dado'}
+        {rolling ? 'Rolando…' : disabled ? 'Aguarde' : (
+          <>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="3"/>
+              <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/>
+              <circle cx="15.5" cy="8.5" r="1.5" fill="currentColor" stroke="none"/>
+              <circle cx="8.5" cy="15.5" r="1.5" fill="currentColor" stroke="none"/>
+              <circle cx="15.5" cy="15.5" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+            Rolar Dado
+          </>
+        )}
       </motion.button>
     </div>
   );
